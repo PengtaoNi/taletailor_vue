@@ -7,11 +7,23 @@
             </div>
         </div>
 
-        <div class="column is-12">
+        <div>
+            <div v-for="(illustration, index) in story.illustrations" :key="illustration.id" class="scene">
+                <img :src="illustration.image" alt="Illustration" class="illustration-image"/>
+                <div class="scene-text">{{ getSceneText(index) }}</div>
+                <hr>
+            </div>
+        </div>
+
+        <!-- <div class="column is-12">
             <div class="content">
                 <p>{{ story.text }}</p>
             </div>
         </div>
+
+        <div v-for="illustration in story.illustrations" :key="illustration.id">
+            <img :src="illustration.image" alt="Illustration" />
+        </div> -->
     </div>
 </template>
 
@@ -41,6 +53,10 @@ export default {
                 .catch(error => {
                     console.log(JSON.stringify(error))
                 })
+        },
+        getSceneText(index) {
+            const scenes = this.story.text.split('\n');
+            return scenes[index];
         },
     }
 }
