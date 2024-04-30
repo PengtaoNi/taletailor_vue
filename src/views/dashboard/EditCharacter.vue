@@ -1,13 +1,5 @@
 <template>
     <div class="page-edit-character">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-            <ul>
-                <li><router-link to="/dashboard">Dashboard</router-link></li>
-                <li><router-link to="/dashboard/my-account">My account</router-link></li>
-                <li class="is-active"><router-link to="/dashboard/my-account/edit-character" aria-current="true">Edit character</router-link></li>
-            </ul>
-        </nav>
-
         <div class="columns is-multiline">
             <div class="column is-12">
                 <h1 class="title">Edit character</h1>
@@ -21,7 +13,7 @@
                     </div>
                 </div>
 
-                <div class="file">
+                <!-- <div class="file">
                     <label class="file-label">
                         <input class="file-input" type="file" name="file">
                         <span class="file-cta">
@@ -33,11 +25,11 @@
                         </span>
                         </span>
                     </label>
-                </div>
+                </div> -->
 
                 <div class="field">
                     <div class="control">
-                        <button class="button is-success" @click="submitForm">Save</button>
+                        <button class="btn btn-outline-primary me-2" @click="submitForm">Save</button>
                     </div>
                 </div>
             </div>

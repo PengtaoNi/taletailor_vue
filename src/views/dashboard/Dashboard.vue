@@ -1,15 +1,56 @@
 <template>
-    <div class="page-dashboard">
-        <div class="columns is-multiline">
-            <div class="column is-12">
-                <h1 class="title">Dashboard</h1>
-            </div>
-        </div>
+  <div class="page-dashboard">
+    <div class="columns is-multiline">
+      <div class="column is-12">
+        <h1 class="column is-12 has-text-centered py-3" style="font-family: mali-bold; text-align: center; color: #2b2f97;">My Stories</h1>
+      </div>
     </div>
+    <div class="column is-12">
+      <div class="row">
+        <div class="col-md-4" v-for="story in stories" :key="story.id">
+          <router-link :to="`/dashboard/story/${story.id}`" class="card mb-4 shadow-sm">
+            <img :src="story.illustrations[0].image" class="card-img-top" alt="Story cover">
+            <div class="card-body">
+              <p class="card-text" style="font-family: mali-bold;">{{ story.title }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <!-- <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div> -->
+              </div>
+            </div>
+          </router-link>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
-    name: 'Dashboard'
+  name: 'Dashboard',
+  data() {
+    return {
+      stories: []
+    };
+  },
+  mounted() {
+    this.getStories()
+  },
+  methods: {
+    getStories() {
+      axios
+        .get(`/api/v1/story`)
+        .then(response => {
+          this.stories = response.data
+          console.log(this.stories[0])
+        })
+        .catch(error => {
+          console.log(JSON.stringify(error))
+        })
+    }
+  }
 }
 </script>

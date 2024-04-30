@@ -1,11 +1,5 @@
 <template>
     <div class="page-my-account">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-            <ul>
-                <li><router-link to="/dashboard">Dashboard</router-link></li>
-                <li class="is-active"><router-link to="/dashboard/my-account" aria-current="true">My account</router-link></li>
-            </ul>
-        </nav>
 
         <h1 class="title">My account</h1>
 
@@ -15,15 +9,15 @@
         <div>
             <strong>My character: </strong>{{ character.name }}
         </div>
-        <div>
+        <!-- <div>
             <img :src="character.image" class="responsive-image"/>
-        </div>
+        </div> -->
 
         <hr>
 
         <div class="buttons">
-            <router-link to="/dashboard/my-account/edit-character" class="button is-light">Edit character</router-link>
-            <button @click="logout()" class="button is-danger">Log out</button>
+            <router-link to="/dashboard/my-account/edit-character" class="btn btn-outline-primary me-2">Edit character</router-link>
+            <button @click="logout()" class="btn btn-danger">Log out</button>
         </div>
     </div>
 </template>
