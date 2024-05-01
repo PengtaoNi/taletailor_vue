@@ -66,7 +66,7 @@ export default {
         position: 'bottom-right',
       })
       axios
-        .post(`/api/v1/story/`, this.story)
+        .post('/api/v1/story/', this.story)
         .then(response => {
           this.$router.push({
             name: 'Story',

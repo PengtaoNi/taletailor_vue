@@ -10,8 +10,8 @@
     <div id="storyCarousel" class="carousel slide" data-ride="carousel" data-bs-wrap="false" style="padding-bottom: 30px;">
       <div class="carousel-inner">
         <div v-for="(illustration, index) in story.illustrations" :key="illustration.id" :class="['carousel-item', { active: index === 0 }]">
-          <img :src="illustration.image" :alt="'Illustration ' + (index + 1)" class="d-block carousel-fit">
-          <div class="carousel-caption d-none d-md-block">
+          <img :src="illustration.image" :alt="'Illustration ' + (index + 1)" class="d-block carousel-image">
+          <div class="caption-below">
             <p class="caption-text"  @mouseover="showTranslation(index)" @mouseleave="hideTranslation">
               <template v-if="translate">
                 {{ getSceneTranslation(index) }}
@@ -88,6 +88,11 @@ export default {
   height: 83vh; /* Full viewport height */
 }
 
+.carousel-image {
+  max-width: 60vh; /* Adjust this value based on your design needs */
+  margin: auto; /* Center the image */
+}
+
 .carousel-fit {
   position: absolute;
   top: 50%;
@@ -104,6 +109,13 @@ export default {
   filter: drop-shadow(20px 20px 40px #000); /* Shadow for visibility */
   background-color: #000;
   border-radius: 50%; /* Circular background */
+}
+
+.caption-below {
+  text-align: center;
+  transform: translate(10%, 0%);
+  max-width: 80vw;
+  margin-top: 20px; /* Space between the image and the caption */
 }
 
 .caption-text {
